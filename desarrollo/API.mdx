@@ -1,0 +1,281 @@
+---
+title: "API"
+description: "Documentación completa de la API de woku para integrar en tus aplicaciones"
+---
+Esta documentación es una guía para integrar la API de woku en tus propias aplicaciones.
+
+## Consideraciones‍
+
+La API de woku está documentada en **Swagger**. Puedes acceder a la documentación interactiva en: [https://clientapi.woku.app/documentation](https://clientapi.woku.app/documentation)
+
+## Introducción‍
+
+La API de woku te permite gestionar **wokus** de manera eficiente mediante tres funciones clave: **crear**, **compartir** y **calificar** wokus. Estas funcionalidades te permiten integrar de forma automática la captura de reseñas dentro de tu aplicación, optimizando la interacción con tus clientes y mejorando la experiencia de usuario.
+
+A continuación, te presentamos las principales funciones que podrás utilizar para estas tareas:
+
+1. **Crear wokus:** Automatiza la generación de nuevos wokus desde tu aplicación, permitiendo que los usuarios dejen sus opiniones y comentarios sin necesidad de una intervención manual.
+2. **Compartir wokus:** Facilita la difusión de wokus con tus clientes o entre equipos, brindando visibilidad a las reseñas directamente desde tu plataforma.
+3. **Calificar wokus:** Permite a los usuarios puntuar los servicios o productos en función de su experiencia, ayudando a capturar métricas valiosas sobre la satisfacción del cliente.
+
+Cada uno de estas funciones están diseñadas para integrarse fácilmente en tus aplicaciones a través de solicitudes HTTP, proporcionando una gestión ágil y segura de los wokus.
+
+### URL Base
+
+- [https://clientapi.woku.app](https://clientapi.woku.app/)
+
+### Autenticación
+
+Cada empresa registrada en woku tiene acceso a los servicios de la API para integrar woku con sus propias aplicaciones.
+
+### Tipo de autenticación‍
+
+Para acceder a las funciones de la API, es necesario autenticarse con la **Clave de Compañía** en cada solicitud.
+
+### Obtención y uso de la Clave de Compañía‍
+
+A cada propietario en woku se le asigna una Clave de Compañía, que deberá incluirse en los encabezados de las peticiones a la API. La interfaz administrativa de woku está disponible en: [https://admin.woku.app](https://admin.woku.app/)
+
+<img src="/images/api-clave-empresa.png" alt="Interfaz de la aplicación woku en la sección de 'Información' de la empresa. Se muestran los datos de la compañía, incluyendo el logo, nombre, página web y enlaces a redes sociales como Instagram, Facebook, LinkedIn, X (ex Twitter), TikTok y GitHub. En la parte inferior, se destaca la opción 'Obtener Clave', que permite copiar la clave de la compañía para clientapi.woku.app." className="mx-auto" />
+
+<div style={{ textAlign: 'center', fontSize: '0.875rem', color: '#6b7280', marginTop: '-1.5rem' }}><strong>Vista de la ventana de información de la empresa en la aplicación del cliente.</strong></div>
+
+En cada solicitud, añade un encabezado de autorización (Authorization) con el formato:
+
+```
+Authorization: Bearer <Company-Key>
+```
+
+<Tip>
+Reemplaza `<Company-Key>` con tu clave de compañía real.
+</Tip>
+
+## wokus
+
+Los **wokus** son las unidades clave para capturar y gestionar reseñas de clientes dentro de la plataforma woku. A través de esta API, puedes automatizar la creación de **wokus** para calificarlos, captura reseñas y compartirlos con tus clientes. A continuación, te presentamos las solicitudes principales que facilitan estas tareas:
+
+- **Crear un woku**: Permite generar un nuevo woku dentro de tu aplicación.
+- **Crear un woku con form-data**: Envío de datos en formato form-data para la creación de wokus.
+- **Obtención de los datos de un woku**: Obtienes los datos de un woku, sus calificaciones y reseñas.
+- **Califica y captura una reseña de texto en un woku**: Captura la calificación y reseña en texto de un cliente en un woku.
+- **Califica y captura una reseña de audio en un woku**: Captura la calificación y reseña en audio de un cliente en un woku.
+- **Compartir un woku por email**: Facilita el envío de wokus directamente por correo electrónico. Permite envío de correos electrónicos masivos.
+
+### Crear un woku desde tu aplicación
+
+Una funcionalidad importante para integrar dentro de tu aplicación es la creación de un **woku**. Esto permetirá automatizar la tarea de crear una herramienta para capturar reseñas sin necesidad de pedirle al administrador que lo haga mediante la interfaz de **woku**.
+
+Para crear un **woku**, envía una solicitud **POST** a la siguiente URL:
+
+- [https://clientapi.woku.app/wokus/create-woku](https://clientapi.woku.app/wokus/create-woku)
+
+#### Headers necesarios
+
+- **Content-Type:** application/json
+- **Authorization:** Bearer `<Company-Key>`
+
+#### Ejemplo de cuerpo de la solicitud (JSON)
+
+```json
+{
+  "description": "Docker Training",
+  "fileUrl": "https://wokudevfiles.blob.core.windows.net/wokus/cd7f9cf3-c2e4-4ff0-8a96-19ff813f569e1699220394936-image.webp",
+  "folderSecondaryKey": "17614778-3",
+  "parentFolderSecondaryKey": "parentFolder17614778-3",
+  "clientEmail": "pedro@empresa.com",
+  "clientPhone": 56982959776
+}
+```
+
+#### Estructuras de datos del body para la petición
+
+- **description**(string): *Obligatorio*. Mínimo 3 y máximo 140 caracteres.
+- **fileUrl**(string): *Obligatorio*. URL de acceso público para una imagen o video (preferentemente .mp4).
+- **folderSecondaryKey** (string): *Opcional*. Clave secundaria de la carpeta donde se almacenará el woku.
+- **parentFolderSecondaryKey** (string): *Opcional*. Clave secundaria de la carpeta principal. No puede ser la misma que **folderSecondaryKey**.
+- **clientEmail** (string): *Opcional*. Debe ser un correo electrónico válido.
+- **clientPhone** (number): Opcional. Debe ser un número válido de WhatsApp.
+
+#### Respuestas esperadas
+
+- **201 Created woku object:** El woku fue creado con éxito.
+- **500 Internal Server Error:** Ocurrió un error en el servidor.
+
+### Crear un woku con Form Data desde tu aplicación
+
+A veces, es útil permitir a los usuarios crear un **woku** a través de una interfaz donde puedan subir imágenes o videos como archivos. Para ello, se proporciona un método que permite la creación de un **woku** utilizando form-data.
+
+Para crear un **woku** con form-data, envía una solicitud **POST** a la siguiente URL:
+
+- [https://clientapi.woku.app/wokus/create-woku-form-data](https://clientapi.woku.app/wokus/create-woku-form-data)
+
+#### Headers necesarios
+
+- **Content-Type**: multipart/form-data
+- **Authorization**: Bearer `<Company-Key>`
+
+#### Estructuras de datos para la solicitud (form-data)‍
+
+- **description**(string): *Obligatorio*. Mínimo 3 y máximo 140 caracteres.
+- **file**($binary): *Obligatorio*. Debe ser un archivo de imagen o video. Para videos, se recomienda usar archivos con la extensión .mp4.
+- **folderSecondaryKey** (string): *Opcional*. Clave secundaria de la carpeta donde se almacenará el woku.
+- **parentFolderSecondaryKey** (string): *Opcional*. Clave secundaria de la carpeta principal. No puede ser la misma que folderSecondaryKey.
+- **clientEmail** (string): *Opcional*. Debe ser un correo electrónico válido.**‍**
+- **clientPhone** (number): Opcional. Debe ser un número válido de WhatsApp.
+
+#### Respuestas esperadas‍
+
+- **201 Created woku object**: El woku fue creado con éxito.
+- **500 Internal Server Error**: Ocurrió un error en el servidor.
+
+### Obtener los datos de un woku‍
+
+Este método permite consultar los datos de un **woku**, incluidas sus calificaciones y reseñas. Puedes utilizar esta funcionalidad para acceder a la información detallada de un **woku** existente.
+
+Para obtener los datos de un **woku**, envía una solicitud **GET** a la siguiente URL:
+
+- [https://clientapi.woku.app/wokus/review/{wokuId}](https://woku.app/docs/api#)‍
+
+#### Headers necesarios
+
+- **Content-Type**: application/json
+- **Authorization**: Bearer `<Company-Key>`
+
+#### Parámetros
+
+- **wokuId**(string): *Obligatorio*. El identificador único del **woku** que deseas consultar.
+
+#### Respuestas esperadas‍
+
+- **200 Data of the woku review successfully obtained**: Se devuelve el objeto del **woku** con éxito.
+- **500 Internal Server Error**: Ocurrió un error en el servidor.
+
+#### Calificar y capturar una reseña en texto en un woku
+
+Este método permite agregar una reseña escrita y una calificación a un **woku**. Es útil para capturar comentarios en texto de los clientes sobre sus experiencias.
+
+Para crear una nota de texto en un **woku**, envía una solicitud **POST** a la siguiente URL:
+
+- [https://clientapi.woku.app/wokus/create-textnote](https://clientapi.woku.app/wokus/create-textnote)
+
+#### Headers necesarios
+
+- **Content-Type**: application/json
+- **Authorization**: Bearer `<Company-Key>`
+
+#### Ejemplo de cuerpo de la solicitud (JSON)
+
+```json
+{
+  "wokuId": "65348875f3a876254aa82d5e",
+  "qualification": 4,
+  "description": "Very good the Docker course!",
+  "clientEmail": "pedro@empresa.com",
+  "clientPhone": 56982959776,
+  "anonymous": false
+}
+```
+
+#### Estructuras de datos para la solicitud
+
+- **wokuId**(string): *Obligatorio*. El ID del **woku** al que se agregará la nota.
+- **qualification**(number): *Obligatorio*. Un valor entero entre 1 y 5 que representa la calificación.
+- **description**(string): *Obligatorio*. El comentario o reseña escrita por el cliente, con un máximo de 255 caracteres.
+- **clientEmail** (string): *Opcional*. Correo electrónico del cliente que deja la reseña. Si no se proporciona, el campo **anonymous** debe ser true.
+- **anonymous** (boolean): *Opcional*. Indica si el feedback es anónimo.
+- **clientPhone** (number): Opcional. Debe ser un número válido de WhatsApp.
+
+#### Respuestas esperadas
+
+- **201 Created textnote object**: La calificación y reseña fue creada con éxito.
+- **500 Internal Server Error**: Ocurrió un error en el servidor.
+
+### Calificar y capturar una reseña en audio en un woku
+
+Este método permite que un cliente califique y deje una reseña en formato de mensaje de voz para un **woku**.
+
+Para crear un mensaje de voz, envía una solicitud **POST** a la siguiente URL:
+
+- [https://clientapi.woku.app/wokus/create-voicemail](https://clientapi.woku.app/wokus/create-voicemail)
+
+##### Headers necesarios‍
+
+- **Content-Type**: multipart/form-data
+- **Authorization**: Bearer `<Company-Key>`
+
+##### Cuerpo de la solicitud (form-data)
+
+- **file**($binary): *Obligatorio*. Archivo de audio o video. Extensiones recomendadas .mp4 o .wav.
+- **wokuId**(text): *Obligatorio*. El ID del **woku** al que se agregará el mensaje de voz.
+- **qualification**(text): *Obligatorio*. Un número entre 1 y 5 que representa la calificación.
+- **clientEmail** (text): *Opcional*. Correo electrónico del cliente que deja la reseña. Si no se proporciona, el campo **anonymous** debe ser true.
+- **anonymous** (text): *Opcional*. Indica si el feedback es anónimo (true o false).
+- **clientPhone** (text): Opcional. Debe ser un número válido de WhatsApp.
+
+##### Respuestas esperadas
+
+‍
+
+- **201 Created voicemail object**: La calificación y reseña fue creada con éxito.
+- **500 Internal Server Error**: Ocurrió un error en el servidor.
+
+### Compartir un woku por correo electrónico
+
+Este método permite compartir un **woku** por correo electrónico a uno o varios destinatarios. Es ideal para difundir reseñas de forma rápida y eficiente.
+
+Para compartir un **woku** por correo, envía una solicitud **POST** a la siguiente URL:
+
+- [https://clientapi.woku.app/wokus/share-woku-to-email](https://clientapi.woku.app/wokus/share-woku-to-email)
+
+#### Headers necesarios
+
+- **Content-Type**: application/json
+- **Authorization**: Bearer `<Company-Key>`
+
+#### Cuerpo de la solicitud (JSON)
+
+Para enviar a un destinatario:
+
+```json
+{
+  "wokuId": "65348875f3a876254aa82d5e",
+  "clientEmail": "pedro@empresa.com"
+}
+```
+
+O para múltiples destinatarios:
+
+```json
+{
+  "wokuId": "65348875f3a876254aa82d5e",
+  "clientEmails": ["pedro@empresa.com", "juan@empresa.com"]
+}
+```
+
+#### Estructuras de datos para la solicitud
+
+- **wokuId**(string): *Obligatorio*. El ID del **woku** que se desea compartir.
+- **clientEmail** (string): *Opcional*. Correo electrónico del destinatario.
+- **clientEmails** (string array): *Opcional*. Lista de correos electrónicos de los destinatarios.
+
+#### Respuestas esperadas
+
+- **201 Email sent successfully**: El correo fue enviado con éxito.
+- **500 Internal Server Error**: Ocurrió un error en el servidor.
+
+## Contacto y Soporte
+
+### Contacto
+
+- Diego Orrego Brito, CTO de woku.
+- Correo electrónico: [diego@woku.app](https://woku.app/docs/api#) (Por favor, incluye el nombre de la empresa en el asunto y menciona que se trata de la API).
+
+## Errores Comunes y Soluciones
+
+### URL de archivo inaccesible‍
+
+Asegúrate de que la URL del archivo proporcionado sea accesible públicamente. Nuestro servicio necesita poder acceder al archivo para crear el **woku**.‍
+
+### Clave secundaria‍
+
+La clave secundaria se utiliza para crear una carpeta donde se almacenará el **woku**. Si no se proporciona una clave secundaria, el **woku** se mantendrá a nivel de la empresa. No pueden existir dos carpetas con la misma clave secundaria dentro de una misma empresa.

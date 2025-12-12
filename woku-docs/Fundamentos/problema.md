@@ -1,0 +1,104 @@
+# Problema
+
+Las encuestas son una herramienta muy usada en las empresas, sobre todo para medir qué tan contentos están los clientes. Sin embargo, cada vez funcionan menos bien. ¿Por qué?
+
+- Los clientes están cansados de responder tantas encuestas.
+- Muchas encuestas están mal diseñadas y no obtienen información útil.
+- Las empresas no saben usar bien los resultados para tomar decisiones importantes.
+
+Estos problemas hacen que las empresas necesiten encontrar nuevas formas de escuchar lo que sus clientes piensan y sienten.
+
+## Fatiga de Encuesta
+
+La gente está cansada de responder encuestas. Esto se nota en varios aspectos:
+
+1. **Menos gente responde**:
+   - En encuestas por teléfono, solo responde un 30% de las personas en promedio.
+   - Puede variar entre un 4% y un 70% (Holbrook et al., 2008).
+2. **Las encuestas largas cansan más**:
+   - Si duran menos de 10 minutos, el 68.2% las termina.
+   - Si duran 30 minutos, solo el 46.8% las termina (Galesic & Bosnjak, 2009).
+3. **La calidad de las respuestas baja con el tiempo**:
+   - Al principio, la gente tarda unos 120 segundos por pregunta.
+   - Al final, solo tardan 105 segundos (Galesic & Bosnjak, 2009).
+   - Las respuestas a preguntas abiertas se hacen más cortas y menos variadas.
+4. **La gente busca terminar rápido**:
+   - Cuando las preguntas son difíciles o la encuesta es larga, la gente tiende a dar respuestas "suficientes" en lugar de pensar mucho.
+   - A veces eligen siempre la misma opción para terminar más rápido (Krosnick, 1991).
+
+Estos problemas hacen que las encuestas sean menos útiles para las empresas, porque no obtienen información de calidad.
+
+## Diseño de Encuesta
+
+Crear una encuesta efectiva es un proceso complejo que va mucho más allá de formular preguntas. Una mala formulación no solo puede confundir, sino también generar datos inútiles que conduzcan a decisiones erróneas.
+
+### El proceso de creación de una encuesta efectiva
+
+Según Hinkin (1998), crear una encuesta efectiva involucra varios pasos críticos:
+
+1. **Desarrollo de una base teórica sólida**:
+   - Requiere una comprensión profunda del tema a investigar.
+   - Implica una revisión exhaustiva de la literatura existente.
+2. **Generación de ítems**:
+   - Creación cuidadosa de preguntas que reflejen los constructos a medir.
+   - Puede involucrar técnicas deductivas (basadas en definiciones) o inductivas (basadas en respuestas de los participantes).
+3. **Evaluación de la validez de contenido**:
+   - Revisión por expertos para asegurar que las preguntas miden lo que deben medir.
+   - Puede requerir múltiples rondas de revisión y ajuste.
+4. **Administración del cuestionario**:
+   - Selección cuidadosa de la muestra.
+   - Implementación del cuestionario, que puede requerir recursos significativos.
+5. **Evaluación de las propiedades psicométricas**:
+   - Análisis factorial para identificar la estructura subyacente de los ítems.
+   - Evaluación de la confiabilidad interna.
+6. **Refinamiento y validación**:
+   - Posible eliminación o modificación de ítems basada en los análisis.
+   - Repetición del proceso con nuevas muestras para confirmar la estructura.
+
+### Reflexión: ¿Por qué esto es un problema?
+
+Ahora que entendemos lo que implica crear una encuesta efectiva, podemos ver por qué esto representa un desafío significativo para las empresas:
+
+1. **Demanda de expertise**: El proceso requiere conocimientos especializados en estadística, psicometría y diseño de investigación que muchas empresas no poseen internamente.
+2. **Inversión de tiempo**: Cada paso del proceso puede tomar semanas o incluso meses, lo que puede no ser compatible con la necesidad de tomar decisiones rápidas en el entorno empresarial actual.
+3. **Costos elevados**: Ya sea que se realice internamente o se contrate a expertos externos, el proceso implica una inversión significativa de recursos financieros.
+4. **Inflexibilidad**: Una vez diseñada, modificar una encuesta para adaptarse a nuevas necesidades o cambios en el mercado implica repetir gran parte del proceso.
+5. **Riesgo de datos poco fiables**: Si se omiten o se realizan apresuradamente algunos pasos para ahorrar tiempo o dinero, se corre el riesgo de obtener datos poco confiables o inválidos.
+6. **Brecha entre teoría y práctica**: Mientras que el proceso académico enfatiza el rigor, las empresas a menudo necesitan soluciones más ágiles y prácticas.
+
+Estas realidades plantean preguntas importantes:
+
+- ¿Pueden las empresas, especialmente las más pequeñas, permitirse este nivel de inversión en el diseño de encuestas?
+- ¿Es sostenible depender de un método que requiere tanto tiempo y recursos en un entorno empresarial que demanda agilidad?
+- ¿Existen alternativas más eficientes para obtener información valiosa de los clientes y del mercado?
+
+La complejidad y el costo del diseño efectivo de encuestas sugieren que, aunque las encuestas pueden ser valiosas, las empresas necesitan explorar métodos complementarios o alternativos para recopilar información de manera más ágil y económica, sin comprometer la calidad de los datos obtenidos.
+
+## Toma de Decisiones
+
+Un estudio de McKinsey & Company, en colaboración con AlphaSights y Gerson Lehrman Group, reveló que aunque el 93% de los más de 260 líderes de CX utilizan encuestas como principal herramienta, solo el 15% está satisfecho con ellas y apenas el 6% cree que son útiles para decisiones estratégicas (Diebner et al., 2021).
+
+### ¿Qué está fallando en las encuestas?
+
+El informe de McKinsey destaca cuatro problemas clave:
+
+- **Limitadas**: Solo capturan una fracción de la experiencia del cliente.
+- **Reactivas**: Responden a los problemas cuando ya es demasiado tarde.
+- **Ambiguas**: No explican las causas raíz de los problemas.
+- **Desenfocadas**: No están conectadas al retorno de inversión (ROI), lo que debilita su valor estratégico.
+
+Estas limitaciones hacen evidente la necesidad de nuevas formas de capturar la voz del cliente y obtener datos accionables que realmente guíen decisiones empresariales.
+
+### Mirando hacia el futuro
+
+A medida que las encuestas tradicionales pierden relevancia en la medición de la experiencia del cliente, surge una oportunidad única para innovar en la forma en que las empresas capturan y analizan la voz de sus clientes. La necesidad de soluciones que aborden los problemas de participación, precisión y acción es más urgente que nunca. El futuro pertenece a aquellas herramientas que puedan superar las limitaciones actuales, permitiendo a las empresas tomar decisiones basadas en datos más auténticos, inmediatos y significativos.
+
+La evolución hacia métodos más ágiles, precisos y conectados a resultados estratégicos abrirá un panorama alentador en la gestión de la experiencia del cliente. Las herramientas del futuro no solo medirán mejor, sino que transformarán la manera en que las empresas comprenden y responden a las expectativas de sus clientes.
+
+### Referencias‍
+
+- Diebner,R., Malfara, D., Neher, K., Thompson, M., & Vancauwenberghe, M. (2021). Predicción: El futuro de la experiencia delcliente. *McKinsey & Company*. [https://www.mckinsey.com/capabilities/growth-marketing-and-sales/our-insights/prediction-the-future-of-cx/es-CL#/](https://www.mckinsey.com/capabilities/growth-marketing-and-sales/our-insights/prediction-the-future-of-cx/es-CL#/)
+- Galesic,M., & Bosnjak, M. (2009). Effects of questionnaire length onparticipation and indicators of response quality in a websurvey. *Publicopinion quarterly*, *73*(2),349-360.
+- Hinkin,T. R. (1998). A brief tutorial on the development of measures for usein survey questionnaires. *Organizationalresearch methods*, *1*(1),104-121.
+- Holbrook,A. L., Krosnick, J. A., & Pfent, A. (2008).The causes and consequences of response rates in surveys by the newsmedia and government contractor survey research firms. *Advancesin telephone survey methodology*,499-528.
+- Krosnick,J. A. (1991). Response strategies for coping with the cognitivedemands of attitude measures in surveys. *Appliedcognitive psychology*, *5*(3),213-236.

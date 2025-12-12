@@ -1,0 +1,23 @@
+# ¿Qué es woku?
+
+Un **woku** es una innovadora herramienta diseñada para simplificar la forma en que las empresas capturan la opinión de sus clientes. A diferencia de las encuestas tradicionales, que pueden ser tediosas y largas, un **woku** permite obtener retroalimentación rápida y efectiva en tiempo real.
+
+Con una interfaz visual y sin necesidad de formular preguntas complejas, esta herramienta se ha convertido en la preferida por su capacidad para integrarse sin fricciones en la experiencia del cliente, ofreciendo resultados inmediatos y accionables.
+
+## Visual y sin preguntas
+
+Un **woku** es una representación visual de un producto, servicio o proceso, diseñado para captar la opinión del cliente de manera rápida y sencilla. A través de una calificación de 1 a 5 estrellas y una reseña en texto o audio, los clientes pueden expresar su experiencia sin ser interrumpidos por largas encuestas.
+
+Lo que diferencia a un **woku** es su capacidad para integrarse de forma fluida en momentos clave del recorrido del cliente, permitiendo que la retroalimentación se capture en tiempo real, sin formular preguntas que interfieran en la experiencia.
+
+![Demostración de la aplicación de woku en un iPhone donde un usuario califica con 5 estrellas un taller de trabajo en equipo, deja un comentario en texto que dice 'Me encantó el taller, aprendí a trabajar mejor con mi equipo', ingresa su correo electrónico, y envía la reseña. Al final, aparece una animación de un avión de papel seguida de un mensaje de agradecimiento por el feedback.](/images/review-iphone.gif)
+**Calificación de un woku en la interfaz de celular.**
+
+## La herramienta #1
+
+El **woku** se ha convertido en la herramienta preferida por su simplicidad y efectividad. A diferencia de las encuestas tradicionales, que pueden tomar más de 15 minutos, los clientes tardan menos de dos minutos en dejar su opinión mediante un **woku**.
+
+Esta agilidad, combinada con una estructura estándar, permite a las empresas recopilar datos de forma rápida y accionable. Además, la consistencia en el formato de los **wokus** facilita un análisis profundo y multinivel, ayudando a las empresas a entender mejor lo que realmente valoran sus clientes.
+
+![Comparación visual de tiempos para obtener feedback entre diferentes métodos. Woku toma 2 minutos, representado por un trofeo de primer lugar y un cilindro azul. Las llamadas toman más de 10 minutos, las encuestas más de 15 minutos, y las entrevistas más de 20 minutos, representados por cilindros de diferentes alturas en tonos grises y negros.](/images/benchmark-tiempos.png)
+**woku es la herramienta más rápida del mercado para entender a tu cliente.**

@@ -69,5 +69,31 @@
     "socials": {
       "linkedin": "https://www.linkedin.com/company/wokuapp"
     }
+  },
+  "seo": {
+    "metatags": {
+      "title": "Documentación de woku - Guía para desarrolladores",
+      "description": "Documentación woku: aprende a implementar la medición de experiencia de usuario. Guías, API, ejemplos y mejores prácticas para capturar reseñas y análisis en tiempo real.",
+      "og:title": "Documentación de woku - Guía para desarrolladores",
+      "og:description": "Documentación woku: aprende a implementar la medición de experiencia de usuario. Guías, API, ejemplos y mejores prácticas para capturar reseñas y análisis en tiempo real.",
+      "og:image": "https://woku.app/og-docs.jpg",
+      "og:url": "https://woku.app/docs",
+      "og:type": "website",
+      "og:site_name": "woku",
+      "twitter:card": "summary_large_image",
+      "twitter:title": "Documentación de woku - Guía para desarrolladores",
+      "twitter:description": "Documentación woku: aprende a implementar la medición de experiencia de usuario. Guías, API, ejemplos y mejores prácticas para capturar reseñas y análisis en tiempo real.",
+      "twitter:image": "https://woku.app/og-docs.jpg",
+      "og:locale": "es_ES",
+      "canonical": "https://woku.app/",
+      "robots": "index, follow",
+      "googlebot": "index, follow",
+      "bingbot": "index, follow",
+      "yandexbot": "index, follow",
+      "duckduckbot": "index, follow",
+      "sitemap": "https://woku.app/sitemap.xml",
+      "sitemap:loc": "https://woku.app/sitemap.xml",
+      "sitemap:lastmod": "2025-12-17"
+    }
   }
 }

@@ -72,7 +72,7 @@ Para crear un **woku**, envía una solicitud **POST** a la siguiente URL:
 ```json
 {
   "description": "Docker Training",
-  "fileUrl": "https://wokudevfiles.blob.core.windows.net/wokus/cd7f9cf3-c2e4-4ff0-8a96-19ff813f569e1699220394936-image.webp",
+  "fileUrl": "https://ik.imagekit.io/dior7woku/woku-web-site/cta/5.webp?updatedAt=1765935599547",
   "folderSecondaryKey": "17614778-3",
   "parentFolderSecondaryKey": "parentFolder17614778-3",
   "clientEmail": "pedro@empresa.com",

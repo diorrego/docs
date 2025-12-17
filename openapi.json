@@ -1,0 +1,916 @@
+{
+  "openapi": "3.0.0",
+  "paths": {
+    "/wokus/create-woku": {
+      "post": {
+        "operationId": "WokusController_createWoku",
+        "summary": "Create a woku with file url",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateWokuDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "woku created successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WokuDTO"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "wokus"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/wokus/create-woku-form-data": {
+      "post": {
+        "operationId": "WokusController_createWokuFormData",
+        "summary": "Create a woku with form-data",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "description": "Data to create a woku with binary file.",
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary",
+                    "description": "Image or Video file. For optimal performance when sending video, the mp4 format is preferred."
+                  },
+                  "description": {
+                    "type": "string",
+                    "description": "The description cannot have fewer than 3 characters and cannot exceed a maximum of 140 characters.",
+                    "example": "Docker Training"
+                  },
+                  "folderSecondaryKey": {
+                    "type": "string",
+                    "description": "This field is optional. Upon completing this field, the woku will be stored in the Company Folder that holds this folder secondary key.",
+                    "example": "17614778-3"
+                  },
+                  "parentFolderSecondaryKey": {
+                    "type": "string",
+                    "description": "This field is optional. Upon completing this field, the woku will be stored in the Company Folder that holds this folder secondary key. This field cannot be the same as folderSecondaryKey because a folder cannot contain itself.",
+                    "example": "17614778-3"
+                  },
+                  "clientEmail": {
+                    "type": "string",
+                    "description": "This field is optional. By completing this field, an email will be sent to the client inviting them to rate the woku.",
+                    "example": "pedro@empesa.com"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "woku created successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WokuDTO"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "wokus"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/wokus/review/{wokuId}": {
+      "get": {
+        "operationId": "WokusController_getWokuReview",
+        "summary": "Get the woku data for review visualization",
+        "parameters": [
+          {
+            "name": "wokuId",
+            "required": true,
+            "in": "path",
+            "description": "ID of the woku to review",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Data of the woku review successfully obtained.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WokuReviewDTO"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "wokus"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/wokus/create-textnote": {
+      "post": {
+        "operationId": "WokusController_createTextnote",
+        "summary": "Create a Textnote",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "description": "Textnote creation data",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateTextnoteDTO"
+              },
+              "examples": {
+                "example1": {
+                  "summary": "Standard Textnote",
+                  "description": "A standard textnote with client email and client phone",
+                  "value": {
+                    "wokuId": "65348875f3a876254aa82d5e",
+                    "qualification": 4,
+                    "description": "Very good the Docker course!",
+                    "clientEmail": "pedro@empresa.com",
+                    "clientPhone": 56982959776,
+                    "anonymous": false
+                  }
+                },
+                "example2": {
+                  "summary": "Anonymous Textnote",
+                  "description": "An anonymous textnote",
+                  "value": {
+                    "wokuId": "65348875f3a876254aa82d5e",
+                    "qualification": 5,
+                    "description": "Excellent training!",
+                    "anonymous": true
+                  }
+                },
+                "example3": {
+                  "summary": "Textnote with email",
+                  "description": "A textnote with client email",
+                  "value": {
+                    "wokuId": "65348875f3a876254aa82d5e",
+                    "qualification": 5,
+                    "description": "Excellent training!",
+                    "clientPhone": 56982959776,
+                    "anonymous": false
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Textnote created successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TextnoteDTO"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "wokus"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/wokus/create-voicemail": {
+      "post": {
+        "operationId": "WokusController_createVoicemail",
+        "summary": "Create a Voicemail",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "description": "Data to create a Voicemail.",
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary",
+                    "description": "Audio file."
+                  },
+                  "wokuId": {
+                    "type": "string",
+                    "description": "This field is the ID of a woku in string format.",
+                    "example": "65348875f3a876254aa82d5e"
+                  },
+                  "qualification": {
+                    "type": "string",
+                    "description": "This field is a string that represents an integer between 1 and 5.",
+                    "example": "5"
+                  },
+                  "clientEmail": {
+                    "type": "string",
+                    "description": "This field is the email of the client providing the feedback. This field is optional. If this field is not filled out, the anonymous field must be marked as true.",
+                    "example": "pedro@empesa.com"
+                  },
+                  "clientPhone": {
+                    "type": "string",
+                    "description": "This field is the phone number of the client providing the feedback. This field is optional.",
+                    "example": "56982959776"
+                  },
+                  "anonymous": {
+                    "type": "string",
+                    "description": "This field is a string that represents a boolean, so the only options are true or false. This field is optional. When this field is a true, sends anonymous feedback. When this field is omitted or marked false, the client email must be provided in the clientEmail field.",
+                    "example": "false"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Voicemail created successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VoicemailDTO"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "wokus"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/wokus/share-woku-to-email": {
+      "post": {
+        "operationId": "WokusController_shareWokuToEmail",
+        "summary": "Share woku to email",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ShareWokuToEmailDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Email sent successfully."
+          }
+        },
+        "tags": [
+          "wokus"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/companies": {
+      "get": {
+        "operationId": "CompanyController_getCompany",
+        "summary": "Get Company data",
+        "description": "Returns the company data including folders, wokus with their reviews, and NPS metrics.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Company data retrieved successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "nps": {
+                      "type": "object",
+                      "description": "NPS metrics data"
+                    },
+                    "wokus": {
+                      "type": "array",
+                      "description": "List of wokus with their reviews",
+                      "items": {
+                        "$ref": "#/components/schemas/WokuDTO"
+                      }
+                    },
+                    "folders": {
+                      "type": "array",
+                      "description": "List of folders"
+                    },
+                    "company": {
+                      "$ref": "#/components/schemas/PublicCompanyDTO"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "companies"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/reports/nps-tool/{npsToolId}": {
+      "get": {
+        "operationId": "ReportController_getNpsToolReport",
+        "summary": "Get NPS Tool Report",
+        "description": "Returns the report for a specific NPS tool of a company.",
+        "parameters": [
+          {
+            "name": "npsToolId",
+            "required": true,
+            "in": "path",
+            "description": "NPS Tool ID",
+            "example": "abc123",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "NPS tool report retrieved successfully."
+          }
+        },
+        "tags": [
+          "reports"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/reports/company-nps": {
+      "get": {
+        "operationId": "ReportController_getCompanyNpsReport",
+        "summary": "Get Company NPS Report",
+        "description": "Returns the complete NPS report for a company.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Company NPS report retrieved successfully."
+          }
+        },
+        "tags": [
+          "reports"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    }
+  },
+  "info": {
+    "title": "woku client API documentation",
+    "description": "This REST API has everything your company needs to create and grade wokus.",
+    "version": "v0.0",
+    "contact": {}
+  },
+  "tags": [
+    {
+      "name": "wokus",
+      "description": ""
+    }
+  ],
+  "servers": [
+    {
+      "url": "https://clientapi.woku.app",
+      "description": "Servidor de producción"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "bearer": {
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "type": "http"
+      }
+    },
+    "schemas": {
+      "CreateWokuDTO": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string",
+            "description": "The description cannot have fewer than 3 characters and cannot exceed a maximum of 140 characters.",
+            "example": "Docker Training"
+          },
+          "fileUrl": {
+            "type": "string",
+            "description": "This field must contain a public URL that includes an image or video file. For optimal performance when sending video, the mp4 format is preferred.",
+            "example": "https://ik.imagekit.io/dior7woku/woku-web-site/cta/5.webp?updatedAt=1765935599547"
+          },
+          "folderSecondaryKey": {
+            "type": "string",
+            "description": "This field is optional. Upon completing this field, the woku will be stored in the Company Folder that holds this folder secondary key.",
+            "example": "17614778-3"
+          },
+          "parentFolderSecondaryKey": {
+            "type": "string",
+            "description": "This field is optional. Upon completing this field, the woku Folder will be stored in the Company Folder that holds this folder secondary key. This field cannot be the same as folderSecondaryKey because a folder cannot contain itself.",
+            "example": "parentFolder17614778-3"
+          },
+          "clientEmail": {
+            "type": "string",
+            "description": "This field is optional. By completing this field, an email will be sent to the client inviting them to rate the woku.",
+            "example": "pedro@empresa.com"
+          },
+          "clientPhone": {
+            "type": "number",
+            "description": "This field is the phone number of the client.",
+            "example": 56982959776
+          }
+        },
+        "required": [
+          "description",
+          "fileUrl"
+        ]
+      },
+      "WokuFileDTO": {
+        "type": "object",
+        "properties": {}
+      },
+      "WokuDTO": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string",
+            "description": "woku ID",
+            "example": "65348875f3a876254aa82d5e"
+          },
+          "description": {
+            "type": "string",
+            "description": "woku description.",
+            "example": "Docker Training"
+          },
+          "createdBy": {
+            "type": "string",
+            "description": "User ID creator of the woku.",
+            "example": "653485cff3a876254aa82d0b"
+          },
+          "companyId": {
+            "type": "string",
+            "description": "Company ID to which the woku belongs.",
+            "example": "6534865cf3a876254aa82d26"
+          },
+          "users": {
+            "description": "Users Ids who worked on the woku. This field can be an empty array.",
+            "example": [
+              "653485cff3a876254aa82d0b",
+              "6541cc3f666483667c07dd92"
+            ],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "file": {
+            "description": "Data of the file representing the woku.",
+            "example": {
+              "filename": "image",
+              "type": "image",
+              "url": "https://ik.imagekit.io/dior7woku/woku-web-site/cta/5.webp?updatedAt=1765935599547"
+            },
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/WokuFileDTO"
+              }
+            ]
+          },
+          "qualifications": {
+            "description": "Array with the Qualifications received from the woku.",
+            "example": [],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "textnotes": {
+            "description": "Array with the Textnotes received from the woku.",
+            "example": [],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "voicemails": {
+            "description": "Array with the Voicemails received from the woku.",
+            "example": [],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "folderId": {
+            "type": "string",
+            "description": "Folder ID.",
+            "example": "6546d641f6258948f2d34b95"
+          }
+        },
+        "required": [
+          "_id",
+          "description",
+          "createdBy",
+          "companyId",
+          "users",
+          "file",
+          "qualifications",
+          "textnotes",
+          "voicemails",
+          "folderId"
+        ]
+      },
+      "PublicCompanyDTO": {
+        "type": "object",
+        "properties": {}
+      },
+      "WokuReviewDTO": {
+        "type": "object",
+        "properties": {
+          "woku": {
+            "description": "Woku data",
+            "example": {
+              "_id": "65348875f3a876254aa82d5e",
+              "description": "Docker Training",
+              "createdBy": "653485cff3a876254aa82d0b",
+              "companyId": "6534865cf3a876254aa82d26",
+              "users": [
+                "653485cff3a876254aa82d0b",
+                "6541cc3f666483667c07dd92"
+              ],
+              "file": {
+                "filename": "image",
+                "type": "image",
+                "url": "https://ik.imagekit.io/dior7woku/woku-web-site/cta/5.webp?updatedAt=1765935599547"
+              },
+              "qualifications": [
+                {
+                  "_id": "Qualification ID",
+                  "qualification": 4
+                }
+              ],
+              "textnotes": [
+                {
+                  "qualification": {
+                    "qualification": 4
+                  },
+                  "anonymous": false,
+                  "description": "Excellent",
+                  "feedbackType": "recognition",
+                  "clientId": "Client ID"
+                }
+              ],
+              "voicemails": [
+                {
+                  "qualification": {
+                    "_id": "Qualification ID",
+                    "qualification": 4
+                  },
+                  "anonymous": false,
+                  "file": {
+                    "filename": "audio-review-6596d27998ebf3609b208f4b",
+                    "type": "audio",
+                    "url": "https://wokudevfiles.blob.core.windows.net/wokus/28a591ae-0d65-40bb-8e4d-687c9bb75397blob"
+                  },
+                  "transcription": "hola todo está súper bien me gustó todo",
+                  "feedbackType": "recognition",
+                  "clientId": "Client ID"
+                }
+              ],
+              "feedbacksSummary": "Training with good comments and congratulations"
+            },
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/WokuDTO"
+              }
+            ]
+          },
+          "users": {
+            "description": "Array of Users who worked on the woku.",
+            "example": [
+              {
+                "_id": "User ID",
+                "name": "dior",
+                "createdAt": "2023-10-22T02:15:43.994+00:00",
+                "avatar": {
+                  "_id": "File ID",
+                  "filename": "diego.png",
+                  "type": "image",
+                  "url": "https://wokudevfiles.blob.core.windows.net/wokus/5fb16472-8fcb-462a-b08b-88fa316e079d1700095980638-diego.webp"
+                }
+              }
+            ],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "company": {
+            "description": "Company data of the woku",
+            "example": {
+              "_id": "Company ID",
+              "name": "woku",
+              "createdAt": "2023-10-22T02:15:43.994+00:00",
+              "avatar": {
+                "_id": "File ID",
+                "filename": "wokuLogo",
+                "type": "image",
+                "url": "https://wokudevfiles.blob.core.windows.net/wokus/24d230df-cd8e-4345-9944-9cfed9c7da52wokuLogo.png"
+              }
+            },
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/PublicCompanyDTO"
+              }
+            ]
+          }
+        },
+        "required": [
+          "woku",
+          "users",
+          "company"
+        ]
+      },
+      "CreateTextnoteDTO": {
+        "type": "object",
+        "properties": {
+          "qualification": {
+            "type": "number"
+          },
+          "wokuId": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "clientId": {
+            "type": "string"
+          },
+          "anonymous": {
+            "type": "boolean"
+          },
+          "clientEmail": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "qualification",
+          "wokuId",
+          "description",
+          "clientId",
+          "anonymous",
+          "clientEmail"
+        ]
+      },
+      "TextnoteQualificationDTO": {
+        "type": "object",
+        "properties": {}
+      },
+      "TextnoteDTO": {
+        "type": "object",
+        "properties": {
+          "qualification": {
+            "description": "Textnote Qualification",
+            "example": {
+              "_id": "Qualification ID",
+              "qualification": 4
+            },
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/TextnoteQualificationDTO"
+              }
+            ]
+          },
+          "wokuId": {
+            "type": "string",
+            "description": "Woku ID",
+            "example": "65348875f3a876254aa82d5e"
+          },
+          "anonymous": {
+            "type": "boolean",
+            "description": "Anonymous state",
+            "example": false
+          },
+          "description": {
+            "type": "string",
+            "description": "Feedaback",
+            "example": "Excellent"
+          },
+          "feedbackType": {
+            "type": "string",
+            "description": "Feedaback type",
+            "example": "recognition"
+          },
+          "clientId": {
+            "type": "string",
+            "description": "Client ID",
+            "example": "653c78b70c83744b1340a551"
+          }
+        },
+        "required": [
+          "qualification",
+          "wokuId",
+          "anonymous",
+          "description",
+          "feedbackType",
+          "clientId"
+        ]
+      },
+      "VoicemailQualificationDTO": {
+        "type": "object",
+        "properties": {}
+      },
+      "VoicemailFileDTO": {
+        "type": "object",
+        "properties": {}
+      },
+      "VoicemailDTO": {
+        "type": "object",
+        "properties": {
+          "qualification": {
+            "description": "Voicemail Qualification",
+            "example": {
+              "_id": "Qualification ID",
+              "qualification": 4
+            },
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/VoicemailQualificationDTO"
+              }
+            ]
+          },
+          "wokuId": {
+            "type": "string",
+            "description": "Woku ID",
+            "example": "65348875f3a876254aa82d5e"
+          },
+          "anonymous": {
+            "type": "boolean",
+            "description": "Anonymous state",
+            "example": false
+          },
+          "transcription": {
+            "type": "string",
+            "description": "Audio transcription",
+            "example": "hola todo está súper bien me gustó todo"
+          },
+          "feedbackType": {
+            "type": "string",
+            "description": "Feedaback type",
+            "example": "recognition"
+          },
+          "file": {
+            "description": "Audio file data",
+            "example": {
+              "filename": "audio-review-6596d27998ebf3609b208f4b",
+              "type": "audio",
+              "url": "https://wokudevfiles.blob.core.windows.net/wokus/28a591ae-0d65-40bb-8e4d-687c9bb75397blob"
+            },
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/VoicemailFileDTO"
+              }
+            ]
+          },
+          "clientId": {
+            "type": "string",
+            "description": "Client ID",
+            "example": "653c78b70c83744b1340a551"
+          }
+        },
+        "required": [
+          "qualification",
+          "wokuId",
+          "anonymous",
+          "transcription",
+          "feedbackType",
+          "file",
+          "clientId"
+        ]
+      },
+      "ShareWokuToEmailDTO": {
+        "type": "object",
+        "properties": {
+          "wokuId": {
+            "type": "string",
+            "description": "This field is the ID of a woku in string format.",
+            "example": "65348875f3a876254aa82d5e"
+          },
+          "clientEmail": {
+            "type": "string",
+            "description": "This field must be a valid customer email.",
+            "example": "pedro@empresa.com"
+          },
+          "clientEmails": {
+            "description": "This field is a customer emails array. If this field is entered, the clientEmail field is not included.",
+            "example": [
+              "pedro@empresa.com",
+              "juan@empresa.com"
+            ],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "wokuId"
+        ]
+      },
+      "CreateVoicemailDTO": {
+        "type": "object",
+        "properties": {
+          "qualification": {
+            "type": "string"
+          },
+          "wokuId": {
+            "type": "string"
+          },
+          "filename": {
+            "type": "string"
+          },
+          "clientId": {
+            "type": "string"
+          },
+          "anonymous": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "size": {
+            "type": "string"
+          },
+          "clientEmail": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "qualification",
+          "wokuId",
+          "filename",
+          "clientId",
+          "anonymous",
+          "type",
+          "size",
+          "clientEmail"
+        ]
+      }
+    }
+  }
+}

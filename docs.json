@@ -14,33 +14,42 @@
     "strict": true
   },
   "navigation": {
-    "groups": [
+    "tabs": [
       {
-        "group": "Empezando",
-        "pages": [
-          "index",
-          "empezando/primer-woku",
-          "empezando/instalacion"
+        "tab": "Documentación",
+        "groups": [
+          {
+            "group": "Empezando",
+            "pages": [
+              "index",
+              "empezando/primer-woku",
+              "empezando/instalacion"
+            ]
+          },
+          {
+            "group": "Fundamentos",
+            "pages": [
+              "fundamentos/problema",
+              "fundamentos/que-es-woku"
+            ]
+          },
+          {
+            "group": "Conceptos Básicos",
+            "pages": [
+              "conceptos-basicos/woku"
+            ]
+          },
+          {
+            "group": "Guía de Integración",
+            "pages": [
+              "desarrollo/API"
+            ]
+          }
         ]
       },
       {
-        "group": "Fundamentos",
-        "pages": [
-          "fundamentos/problema",
-          "fundamentos/que-es-woku"
-        ]
-      },
-      {
-        "group": "Conceptos Básicos",
-        "pages": [
-          "conceptos-basicos/woku"
-        ]
-      },
-      {
-        "group": "Desarrollo",
-        "pages": [
-          "desarrollo/API"
-        ]
+        "tab": "API Reference",
+        "openapi": "/openapi.json"
       }
     ]
   },
